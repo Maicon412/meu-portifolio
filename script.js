@@ -1,3 +1,4 @@
+// ------------------- Animação de Digitação -------------------
 const textoElemento = document.querySelector(".typing-animation");
 const palavras = ["Landing-Pages", "Sites Comerciais", "Portfólios Profissionais", "Lojas Virtuais"];
 let palavraIndex = 0;
@@ -14,79 +15,62 @@ function digitar() {
         setTimeout(digitar, 90);
     } else if (apagando && letraIndex > 0) {
         letraIndex--;
-        setTimeout(digitar, 30);
+        setTimeout(digitar, 40);
     } else {
         apagando = !apagando;
         if (!apagando) {
             palavraIndex = (palavraIndex + 1) % palavras.length;
         }
-        setTimeout(digitar, 100);
+        setTimeout(digitar, 800); // pausa antes de trocar a palavra
     }
 }
 
 digitar();
- 
-// Lógica para alternar entre os conteúdos
+
+// ------------------- Tabs -------------------
 const buttons = document.querySelectorAll('.tab-btn');
 const contents = document.querySelectorAll('.tab-content');
 
-// Adiciona evento de clique nos botões
 buttons.forEach(button => {
     button.addEventListener('click', () => {
-        // Remove a classe ativa de todos os botões e conteúdos
+        // Remove ativo de todos
         buttons.forEach(btn => btn.classList.remove('active'));
         contents.forEach(content => content.classList.remove('active'));
 
-        // Adiciona a classe ativa no botão e no conteúdo correspondente
+        // Ativa o botão clicado
         button.classList.add('active');
         const targetContent = document.querySelector(button.getAttribute('data-target'));
-        targetContent.classList.add('active');
+        if (targetContent) {
+            targetContent.classList.add('active');
+        }
     });
 });
 
-// Função para mostrar os elementos com fade-in ao rolar a página
-window.addEventListener('scroll', function() {
-    const contato = document.querySelector('.contato');
-    const contatoPosition = contato.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
+// ------------------- Animação ao rolar (Contato + Scroll) -------------------
+function scrollAnimation() {
+    let elements = document.querySelectorAll(".scroll-animation, .contato");
+    let windowHeight = window.innerHeight;
 
-    if (contatoPosition < windowHeight - 100) {
-        contato.classList.add('aparecer');
-    }
-});
+    elements.forEach((el) => {
+        let elementTop = el.getBoundingClientRect().top;
+        let elementBottom = el.getBoundingClientRect().bottom;
 
-document.addEventListener("DOMContentLoaded", function () {
-    let ticking = false;
-
-    function scrollAnimation() {
-        let elements = document.querySelectorAll(".scroll-animation");
-        let windowHeight = window.innerHeight;
-
-        elements.forEach((el) => {
-            let elementTop = el.getBoundingClientRect().top;
-            let elementBottom = el.getBoundingClientRect().bottom;
-
-            if (elementTop < windowHeight - 100) {
-                el.classList.add("show");
-            }
-
-            if (elementBottom < 0) {
-                el.classList.remove("show");
-            }
-        });
-
-        ticking = false; // Libera para a próxima animação
-    }
-
-    function onScroll() {
-        if (!ticking) {
-            ticking = true;
-            requestAnimationFrame(scrollAnimation);
+        // Aparece quando entra na tela
+        if (elementTop < windowHeight - 100) {
+            el.classList.add("show", "aparecer");
         }
-    }
 
-    window.addEventListener("scroll", onScroll);
-    scrollAnimation();
+        // Some se sair da tela (opcional, pode remover se quiser fixo)
+        if (elementBottom < 0) {
+            el.classList.remove("show", "aparecer");
+        }
+    });
+}
+
+document.addEventListener("scroll", () => {
+    requestAnimationFrame(scrollAnimation);
 });
 
+// Dispara ao carregar
+document.addEventListener("DOMContentLoaded", scrollAnimation);
 
