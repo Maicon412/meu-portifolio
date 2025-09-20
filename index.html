@@ -1,113 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfólio de Editor de Vídeo — showreel, serviços e contato.">
-  <title>Portfólio — Editor de Vídeo</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfólio - Editor de Vídeo</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <!-- Navbar -->
   <header class="navbar">
-    <div class="container">
-      <a href="#" class="logo">EditorNome</a>
-      <nav class="menu" id="menu">
-        <a href="#showreel">Showreel</a>
-        <a href="#services">Serviços</a>
-        <a href="#about">Sobre</a>
-        <a href="#contact">Contato</a>
-      </nav>
-      <button class="menu-toggle" id="menu-toggle">☰</button>
+    <div class="logo">🎬 MCN Editor</div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#hero">Início</a>
+      <a href="#showreel">Videos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <div class="menu-btn" id="menuBtn">
+      <span></span><span></span><span></span>
     </div>
   </header>
 
-  <main>
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container hero-content">
-        <div>
-          <h1>Editor de vídeo — ritmo, cor e narrativa visual</h1>
-          <p>Transformo horas de material em histórias que conectam. Especialidade em vídeos institucionais, documentários curtos e clipes promocionais.</p>
-          <button onclick="document.getElementById('showreel').scrollIntoView({behavior:'smooth'})">Ver showreel</button>
-          <a href="#contact" class="btn-outline">Contratar</a>
-        </div>
-        <div>
-          <img src="assets/poster-sample.jpg" alt="Thumbnail do showreel">
-        </div>
-      </div>
-    </section>
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <h1>Ainda não conhece meu trabalho?</h1>
+    <p>Transforme seu negócio com videos estimulantes que irão garantir uma maior visibilidade para seus produtos</p>
+    <a href="#showreel" class="btn">Ver Videos</a>
+  </section>
 
-    <!-- Showreel -->
-    <section id="showreel" class="showreel container">
-      <h2>Showreel</h2>
-      <div class="grid">
-        <div class="card" onclick="openVideo('https://www.youtube.com/embed/dQw4w9WgXcQ')">
-          <img src="assets/thumb1.jpg" alt="Projeto A">
-          <h3>Showreel — Projeto A</h3>
-        </div>
-        <div class="card" onclick="openVideo('https://www.youtube.com/embed/kXYiU_JCYtU')">
-          <img src="assets/thumb2.jpg" alt="Projeto B">
-          <h3>Trailer — Projeto B</h3>
-        </div>
-        <div class="card" onclick="openVideo('assets/demo.mp4')">
-          <img src="assets/poster-sample.jpg" alt="Projeto C">
-          <h3>Promo — Projeto C</h3>
-        </div>
-      </div>
-    </section>
-
-    <!-- Serviços -->
-    <section id="services" class="services">
-      <div class="container">
-        <h2>Serviços</h2>
-        <div class="grid">
-          <div class="card">
-            <h3>Edição e montagem</h3>
-            <p>Cortes, ritmo, correção de cor básica, entrega em diferentes formatos.</p>
-          </div>
-          <div class="card">
-            <h3>Color grading</h3>
-            <p>Gradação de cor com LUTs, consultoria estética e look final para projetos.</p>
-          </div>
-          <div class="card">
-            <h3>Motion graphics</h3>
-            <p>Animações, lower thirds e vinhetas simples para vídeos corporativos.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contato -->
-    <section id="contact" class="contact">
-      <div class="container">
-        <h2>Contato</h2>
-        <form action="https://formspree.io/f/your-form-id" method="POST">
-          <input type="text" name="name" placeholder="Seu nome" required>
-          <input type="email" name="email" placeholder="Seu email" required>
-          <input type="text" name="subject" placeholder="Assunto">
-          <textarea name="message" rows="5" placeholder="Mensagem" required></textarea>
-          <button type="submit">Enviar mensagem</button>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p><strong>EditorNome</strong> — contato@editor.com</p>
-      <p>© 2025 EditorNome. Todos os direitos reservados.</p>
+  <!-- Showreel -->
+  <section class="showreel scroll-reveal" id="showreel">
+    <h2>Videos</h2>
+    <div class="grid">
+      <div class="thumb">🎥 Vídeo 1</div>
+      <div class="thumb">🎥 Vídeo 2</div>
+      <div class="thumb">🎥 Vídeo 3</div>
     </div>
-  </footer>
+  </section>
 
-  <!-- Modal de Vídeo -->
-  <div class="modal" id="videoModal">
-    <div class="modal-content">
-      <span class="close" onclick="closeVideo()">&times;</span>
-      <iframe id="videoFrame" src="" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-    </div>
-  </div>
+  <!-- Contato -->
+  <section class="contato scroll-reveal" id="contato">
+    <h2>Contato</h2>
+    <p>Solicitar Serviço!!</p>
+    <a href="mailto:exemplo@email.com" class="btn">Enviar pedido</a>
+  </section>
 
   <script src="script.js"></script>
 </body>
