@@ -1,26 +1,33 @@
-// Menu mobile
-const menuToggle = document.getElementById("menu-toggle");
-const menu = document.getElementById("menu");
-menuToggle.addEventListener("click", () => {
-  menu.classList.toggle("active");
+// Botão menu hamburguer
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+  menuBtn.classList.toggle("open");
+  navLinks.classList.toggle("active");
 });
 
-// Modal de vídeo
-const videoModal = document.getElementById("videoModal");
-const videoFrame = document.getElementById("videoFrame");
+// Scroll reveal com reset
+const reveals = document.querySelectorAll(".scroll-reveal");
 
-function openVideo(src) {
-  videoModal.style.display = "flex";
-  if (src.includes("youtube")) {
-    videoFrame.src = src + "?autoplay=1";
-  } else {
-    videoFrame.outerHTML = `<video id="videoFrame" src="${src}" controls autoplay style="width:100%; height:450px;"></video>`;
-  }
+function revealOnScroll() {
+  const windowHeight = window.innerHeight;
+  const revealPoint = 100;
+
+  reveals.forEach((el) => {
+    const revealTop = el.getBoundingClientRect().top;
+    const revealBottom = el.getBoundingClientRect().bottom;
+
+    // Se o elemento está visível na tela → adiciona .show
+    if (revealTop < windowHeight - revealPoint && revealBottom > revealPoint) {
+      el.classList.add("show");
+    } 
+    // Se saiu da tela → remove .show (reset)
+    else {
+      el.classList.remove("show");
+    }
+  });
 }
 
-function closeVideo() {
-  videoModal.style.display = "none";
-  videoFrame.src = "";
-}
-
-
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
