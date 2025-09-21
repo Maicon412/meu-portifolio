@@ -121,15 +121,88 @@ body {
   transform: scale(1.05);
 }
 
-/* CONTATO */
-.contato {
-  padding: 5rem 2rem;
-  text-align: center;
+/* Formulário de contato */
+.contact-form {
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 10rem;
+  background: #1c1c1c;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 188, 212, 0.3);
+  animation: fadeIn 0.8s ease;
 }
-.contato h2 {
+.contact-form h2 {
   font-size: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  width: 100%;          /* ocupa toda a largura da tela */
+  text-align: center;   /* centraliza em qualquer tamanho */
 }
+.contact form button {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #ff4d6d;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.contact form button:hover {
+  background: #e63e5c;
+  transform: scale(1.05); /* animaçãozinha de zoom ao passar o mouse */
+}
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  background: #2a2a2a;
+  color: #fff;
+  font-size: 1rem;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  transform: scale(1.02);
+  box-shadow: 0 0 8px #00bcd4;
+}
+.feedback {
+  margin-top: 1rem;
+  color: #00e676;
+  font-weight: bold;
+  display: none;
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Animação de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 
 /* SCROLL REVEAL */
 .scroll-reveal {
@@ -160,4 +233,41 @@ body {
   .menu-btn {
     display: flex;
   }
+}
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.tab-btn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  background: #1c1c1c;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s, transform 0.3s;
+}
+.tab-btn:hover {
+  background: #00bcd4;
+  transform: scale(1.05);
+}
+.tab-btn.active {
+  background: #00bcd4;
+}
+
+/* Conteúdo das abas */
+/* Conteúdo das abas com animação */
+.tab-content {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.tab-content.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
 }
