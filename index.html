@@ -27,22 +27,70 @@
     <a href="#showreel" class="btn">Ver Videos</a>
   </section>
 
-  <!-- Showreel -->
-  <section class="showreel scroll-reveal" id="showreel">
-    <h2>Videos</h2>
+ <!-- Showreel -->
+<section class="showreel scroll-reveal" id="showreel">
+  <h2>Portfólio</h2>
+
+  <!-- Botões de troca -->
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="reels">Videos</button>
+    <button class="tab-btn" data-tab="certificados">Certificados</button>
+  </div>
+
+  <!-- Conteúdo Showreels -->
+  <div class="tab-content active" id="reels">
     <div class="grid">
       <div class="thumb">🎥 Vídeo 1</div>
       <div class="thumb">🎥 Vídeo 2</div>
       <div class="thumb">🎥 Vídeo 3</div>
     </div>
-  </section>
+  </div>
+
+  <!-- Conteúdo Certificados -->
+  <div class="tab-content" id="certificados">
+    <div class="grid">
+      <div class="thumb">📜 Certificado 1</div>
+      <div class="thumb">📜 Certificado 2</div>
+      <div class="thumb">📜 Certificado 3</div>
+    </div>
+  </div>
+</section>
+
 
   <!-- Contato -->
-  <section class="contato scroll-reveal" id="contato">
-    <h2>Contato</h2>
-    <p>Solicitar Serviço!!</p>
-    <a href="mailto:exemplo@email.com" class="btn">Enviar pedido</a>
-  </section>
+<section class="contato scroll-reveal" id="contato">
+  
+  <form id="serviceForm" class="contact-form">
+    <h2>Solicitar Serviço</h2>
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input type="text" id="nome" required />
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" required />
+    </div>
+    <div class="form-group">
+      <label for="servico">Serviço</label>
+      <select id="servico" required>
+        <option value="">Selecione...</option>
+        <option value="Edição de Vídeo">Edição completa</option>
+        <option value="Motion Graphics">Correção de cor</option>
+        <option value="Colorização">Outro</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="mensagem">Mensagem</label>
+      <textarea id="mensagem" rows="4" required></textarea>
+    </div>
+    <button type="submit" class="btn">Enviar Pedido</button>
+  </form>
+
+  <!-- Feedback -->
+  <div id="feedback" class="feedback">✅ Pedido enviado com sucesso!</div>
+</section>
+
+
 
   <script src="script.js"></script>
 </body>
