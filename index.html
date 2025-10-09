@@ -1,97 +1,192 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<!-- Website - www.codingnepalweb.com -->
+<html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfólio - Editor de Vídeo</title>
+  <title>Responsive Portfolio Website HTML CSS| CodingNepal</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- Fontawesome CDN Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
-<body>
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="logo">🎬 MCN Editor</div>
-    <nav class="nav-links" id="navLinks">
-      <a href="#hero">Início</a>
-      <a href="#showreel">Videos</a>
-      <a href="#contato">Contato</a>
-    </nav>
-    <div class="menu-btn" id="menuBtn">
-      <span></span><span></span><span></span>
-    </div>
-  </header>
 
-  <!-- Hero -->
-  <section class="hero" id="hero">
-    <h1>Ainda não conhece meu trabalho?</h1>
-    <p>Transforme seu negócio com videos estimulantes que irão garantir uma maior visibilidade para seus produtos</p>
-    <a href="#showreel" class="btn">Ver Videos</a>
+<body>
+  <!-- Move to up button -->
+  <div class="scroll-button">
+    <a href="#home"><i class="fas fa-arrow-up"></i></a>
+  </div>
+  <!-- navgaition menu -->
+  <nav>
+    <div class="navbar">
+      <div class="logo"><a href="#">Portfolio</a></div>
+      <ul class="menu">
+        <li><a href="#home">Início</a></li>
+        <li><a href="#about">Sobre Mim</a></li>
+        <li><a href="#skills">Habilidades</a></li>
+        <li><a href="#services">serviços</a></li>
+        <li><a href="#contact">Contato</a></li>
+        <div class="cancel-btn">
+          <i class="fas fa-times"></i>
+        </div>
+      </ul>
+      <div class="media-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="menu-btn">
+      <i class="fas fa-bars"></i>
+    </div>
+  </nav>
+
+  <!-- Home Section Start -->
+  <section class="home" id="home">
+    <div class="home-content">
+      <div class="text">
+        <div class="text-one">Olá,</div>
+        <div class="text-two">Eu sou Maicon!</div>
+        <div class="text-three">Video Editor</div>
+        <div class="text-four">from Brasil</div>
+      </div>
+      <div class="button">
+        <button>adicionar ação</button>
+      </div>
+    </div>
   </section>
 
- <!-- Showreel -->
-<section class="showreel scroll-reveal" id="showreel">
-  <h2>Portfólio</h2>
-
-  <!-- Botões de troca -->
-  <div class="tabs">
-    <button class="tab-btn active" data-tab="reels">Videos</button>
-    <button class="tab-btn" data-tab="certificados">Certificados</button>
-  </div>
-
-  <!-- Conteúdo Showreels -->
-  <div class="tab-content active" id="reels">
-    <div class="grid">
-      <div class="thumb">🎥 Vídeo 1</div>
-      <div class="thumb">🎥 Vídeo 2</div>
-      <div class="thumb">🎥 Vídeo 3</div>
-    </div>
-  </div>
-
-  <!-- Conteúdo Certificados -->
-  <div class="tab-content" id="certificados">
-    <div class="grid">
-      <div class="thumb">📜 Certificado 1</div>
-      <div class="thumb">📜 Certificado 2</div>
-      <div class="thumb">📜 Certificado 3</div>
+ <section class="about" id="about">
+  <div class="content">
+    <div class="title"><span>Sobre mim</span></div>
+    <div class="about-details">
+      <div class="left">
+        <div class="carousel">
+          <div class="slides">
+            <div class="slide">
+              <video src="videos/showreel1.mp4" autoplay muted loop playsinline></video>
+            </div>
+            <div class="slide">
+              <video src="videos/showreel2.mp4" autoplay muted loop playsinline></video>
+            </div>
+            <div class="slide">
+              <img src="images/showreel3.jpg" alt="Showreel imagem" />
+            </div>
+          </div>
+          <div class="controls">
+            <button id="prev">‹</button>
+            <button id="next">›</button>
+          </div>
+          <div class="indicators"></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-
-  <!-- Contato -->
-<section class="contato scroll-reveal" id="contato">
-  
-  <form id="serviceForm" class="contact-form">
-    <h2>Solicitar Serviço</h2>
-    <div class="form-group">
-      <label for="nome">Nome</label>
-      <input type="text" id="nome" required />
+  <!-- My Skill Section Start -->
+  <!-- Section Tag and Other Div will same where we need to put same CSS -->
+  <section class="skills" id="skills">
+    <div class="content">
+      <div class="title"><span>Minhas Habilidades</span></div>
+      <div class="skills-details">
+        <div class="text">
+          <div class="topic">Habilidades refletem nosso conhecimento</div>
+          <p>Minhas habilidades refletem meu compromisso em entregar resultados com qualidade, dedicação e criatividade. Acredito que cada tarefa é uma oportunidade de aprendizado e aprimoramento — e é isso que me motiva a buscar sempre o melhor.<br />
+            Se você busca alguém que leve seu projeto a sério e trabalhe com criatividade e entusiasmo, estarei pronto para contribuir com o seu sucesso.
+          </p>
+          <div class="experience">
+            <div class="num"></div>
+            <div class="exp">
+               
+            </div>
+          </div>
+        </div>
+        <div class="boxes">
+          <div class="box">
+            <div class="topic">Cortes</div>
+            <div class="per">90%</div>
+          </div>
+          <div class="box">
+            <div class="topic">Sound Design</div>
+            <div class="per">80%</div>
+          </div>
+          <div class="box">
+            <div class="topic">Color Grading</div>
+            <div class="per">70%</div>
+          </div>
+          <div class="box">
+            <div class="topic">Legendas</div>
+            <div class="per">60%</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="email" id="email" required />
+  </section>
+
+  <!-- My Services Section Start -->
+  <section class="services" id="services">
+    <div class="content">
+      <div class="title"><span>Meus serviços</span></div>
+      <div class="boxes">
+        <div class="box">
+          <div class="icon">
+            <i class="fas fa-desktop"></i>
+          </div>
+          <div class="topic">🎥 Edição de vídeos para redes sociais</div>
+          <p>Criação de vídeos curtos e dinâmicos para plataformas como Instagram, TikTok e YouTube Shorts.</p>
+        </div>
+        <div class="box">
+          <div class="icon">
+            <i class="fas fa-paint-brush"></i>
+          </div>
+          <div class="topic">💼 Edição de vídeos corporativos</div>
+          <p>Montagem de vídeos institucionais, apresentações empresariais e treinamentos internos.</p>
+        </div>
+        <div class="box">
+          <div class="icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="topic">🧩 Criação de videoclipes ou reels</div>
+          <p>Sincronização de áudio e imagem, cortes criativos e efeitos visuais para artistas ou influenciadores.</p>
+        </div>
+        <div class="box">
+          <div class="icon">
+            <i class="fab fa-android"></i>
+          </div>
+          <div class="topic">🎓 Edição de vídeos educacionais</div>
+          <p>Montagem de aulas, videoaulas e conteúdos didáticos com legendas, gráficos e cortes limpos.</p>
+        </div>
+        <div class="box">
+          <div class="icon">
+            <i class="fas fa-camera-retro"></i>
+          </div>
+          <div class="topic">🪄 Pós-produção e efeitos visuais (VFX)</div>
+          <p>Correção de cor, inserção de transições, filtros e pequenos efeitos especiais.</p>
+        </div>
+        <div class="box">
+          <div class="icon">
+            <i class="fas fa-tablet-alt"></i>
+          </div>
+          <div class="topic">🔊 Edição de som e trilha sonora</div>
+          <p>Ajuste de volume, remoção de ruídos e adição de músicas ou efeitos sonoros que valorizam o vídeo.</p>
+        </div>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="servico">Serviço</label>
-      <select id="servico" required>
-        <option value="">Selecione...</option>
-        <option value="Edição de Vídeo">Edição completa</option>
-        <option value="Motion Graphics">Correção de cor</option>
-        <option value="Colorização">Outro</option>
-      </select>
+  </section>
+
+  <!-- Contact Me section Start -->
+  <section class="contact" id="contact">
+    <div class="content">
+      <div class="title"><span>Contato</span></div>
+      <div class="text">
+        <div class="topic">Tem Algum Pedido?</div>
+        <p>ainda irei colocar minhas redes sociais aqui em baixo.</p>
+       
+      </div>
     </div>
-    <div class="form-group">
-      <label for="mensagem">Mensagem</label>
-      <textarea id="mensagem" rows="4" required></textarea>
-    </div>
-    <button type="submit" class="btn">Enviar Pedido</button>
-  </form>
-
-  <!-- Feedback -->
-  <div id="feedback" class="feedback">✅ Pedido enviado com sucesso!</div>
-</section>
-
-
-
+  </section>
   <script src="script.js"></script>
 </body>
+
 </html>
