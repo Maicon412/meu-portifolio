@@ -1,91 +1,105 @@
-// Botão menu hamburguer
-const menuBtn = document.getElementById("menuBtn");
-const navLinks = document.getElementById("navLinks");
+// Sticky Navigation Menu
+let nav = document.querySelector("nav");
+let scrollBtn = document.querySelector(".scroll-button a");
 
-menuBtn.addEventListener("click", () => {
-  menuBtn.classList.toggle("open");
-  navLinks.classList.toggle("active");
+// Show/hide sticky navigation and scroll button based on scroll position
+window.onscroll = function () {
+  if (document.documentElement.scrollTop > 20) {
+    nav.classList.add("sticky");
+    scrollBtn.style.display = "block";
+  } else {
+    nav.classList.remove("sticky");
+    scrollBtn.style.display = "none";
+  }
+};
+
+// Side Navigation Menu
+let body = document.querySelector("body");
+let navBar = document.querySelector(".navbar");
+let menuBtn = document.querySelector(".menu-btn");
+let cancelBtn = document.querySelector(".cancel-btn");
+
+// Open side navigation
+menuBtn.onclick = function () {
+  navBar.classList.add("active");
+  menuBtn.style.opacity = "0";
+  menuBtn.style.pointerEvents = "none";
+  body.style.overflow = "hidden";
+  scrollBtn.style.pointerEvents = "none";
+};
+
+const hideNavMenu = () => {
+  navBar.classList.remove("active");
+  menuBtn.style.opacity = "1";
+  menuBtn.style.pointerEvents = "auto";
+  body.style.overflow = "auto";
+  scrollBtn.style.pointerEvents = "auto";
+};
+
+// Close side navigation
+cancelBtn.onclick = hideNavMenu;
+
+// Close side navigation when a menu link is clicked
+let navLinks = document.querySelectorAll(".menu li a");
+navLinks.forEach((link) => {
+  link.addEventListener("click", hideNavMenu);
 });
 
-// Scroll reveal com reset
-const reveals = document.querySelectorAll(".scroll-reveal");
+// js carrousel
 
-function revealOnScroll() {
-  const windowHeight = window.innerHeight;
-  const revealPoint = 100;
+const slides = document.querySelector(".slides");
+  const totalSlides = document.querySelectorAll(".slide").length;
+  const indicators = document.querySelector(".indicators");
+  let index = 0;
+  let autoplay;
 
-  reveals.forEach((el) => {
-    const revealTop = el.getBoundingClientRect().top;
-    const revealBottom = el.getBoundingClientRect().bottom;
+  // Criar bolinhas
+  for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement("span");
+    dot.classList.add("dot");
+    if (i === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => goToSlide(i));
+    indicators.appendChild(dot);
+  }
 
-    // Se o elemento está visível na tela → adiciona .show
-    if (revealTop < windowHeight - revealPoint && revealBottom > revealPoint) {
-      el.classList.add("show");
-    } 
-    // Se saiu da tela → remove .show (reset)
-    else {
-      el.classList.remove("show");
-    }
-  });
-}
+  const dots = document.querySelectorAll(".dot");
 
-window.addEventListener("scroll", revealOnScroll);
-window.addEventListener("load", revealOnScroll);
-// Tabs Showreel/Certificados com animação
-const tabBtns = document.querySelectorAll(".tab-btn");
-const tabContents = document.querySelectorAll(".tab-content");
+  function updateCarousel() {
+    slides.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((dot, i) =>
+      dot.classList.toggle("active", i === index)
+    );
+  }
 
-tabBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    // Remove active de todos os botões
-    tabBtns.forEach((b) => b.classList.remove("active"));
-    btn.classList.add("active");
+  function nextSlide() {
+    index = (index + 1) % totalSlides;
+    updateCarousel();
+  }
 
-    // Fecha todos os conteúdos
-    tabContents.forEach((c) => {
-      c.classList.remove("active");
-    });
+  function prevSlide() {
+    index = (index - 1 + totalSlides) % totalSlides;
+    updateCarousel();
+  }
 
-    // Mostra o conteúdo da aba escolhida com leve atraso para transição
-    const target = document.getElementById(btn.dataset.tab);
-    target.style.display = "block"; // garante que aparece para animar
-    setTimeout(() => target.classList.add("active"), 10);
+  function goToSlide(i) {
+    index = i;
+    updateCarousel();
+  }
 
-    // Esconde os outros de forma suave
-    tabContents.forEach((c) => {
-      if (c !== target) {
-        c.style.display = "none";
-      }
-    });
-  });
-});
-// Formulário de serviços
-const form = document.getElementById("serviceForm");
-const feedback = document.getElementById("feedback");
+  // Controles
+  document.getElementById("next").addEventListener("click", nextSlide);
+  document.getElementById("prev").addEventListener("click", prevSlide);
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+  // Autoplay
+  function startAutoplay() {
+    autoplay = setInterval(nextSlide, 5000);
+  }
 
-  // Pega os valores do formulário
-  const pedido = {
-    nome: document.getElementById("nome").value,
-    email: document.getElementById("email").value,
-    servico: document.getElementById("servico").value,
-    mensagem: document.getElementById("mensagem").value,
-    data: new Date().toLocaleString()
-  };
+  function stopAutoplay() {
+    clearInterval(autoplay);
+  }
 
-  // Armazena no localStorage
-  let pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
-  pedidos.push(pedido);
-  localStorage.setItem("pedidos", JSON.stringify(pedidos));
+  document.querySelector(".carousel").addEventListener("mouseenter", stopAutoplay);
+  document.querySelector(".carousel").addEventListener("mouseleave", startAutoplay);
 
-  // Feedback visual
-  feedback.style.display = "block";
-  setTimeout(() => {
-    feedback.style.display = "none";
-  }, 3000);
-
-  // Reseta formulário
-  form.reset();
-});
+  startAutoplay();
