@@ -12,7 +12,22 @@
 
 body{ 
   background-color: #000;
+  
+  background-image: url("images/bg.jpg"); /* caminho da imagem */
+  background-size: cover;     /* faz a imagem preencher a tela */
+  background-position: center; /* centraliza em todas as telas */
+  background-repeat: no-repeat; /* evita repetição */
+  background-attachment: fixed; /* opcional — fixa no desktop */
+
 }
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll; /* evita bug no mobile */
+    background-position: center top; /* reposiciona se precisar */
+  }
+}
+
+
 /* Custom Scroll Bar CSS */
 ::-webkit-scrollbar {
   width: 10px;
