@@ -50,39 +50,63 @@
         <div class="text-three">Video Editor</div>
         <div class="text-four">from Brasil</div>
       </div>
-      <div class="button">
-        <button>adicionar ação</button>
-      </div>
+      
     </div>
   </section>
 
- <section class="about" id="about">
+<section class="about" id="about">
   <div class="content">
-    <div class="title"><span>Sobre mim</span></div>
+    <div class="title"><span>Exemplo</span></div>
     <div class="about-details">
-      <div class="left">
-        <div class="carousel">
-          <div class="slides">
-            <div class="slide">
-              <video src="videos/showreel1.mp4" autoplay muted loop playsinline></video>
-            </div>
-            <div class="slide">
-              <video src="videos/showreel2.mp4" autoplay muted loop playsinline></video>
-            </div>
-            <div class="slide">
-              <img src="images/showreel3.jpg" alt="Showreel imagem" />
+      <div class="carousel">
+        <div class="slides">
+          <div class="slide">
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/w-PGlIWx3D0?si=lPepvr7PlHdZ_uLs"
+                title="Showreel 1"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
             </div>
           </div>
-          <div class="controls">
-            <button id="prev">‹</button>
-            <button id="next">›</button>
+          <div class="slide">
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/kTlRoHSYNJ4?si=tpFY08MWCLnFCLQP"
+                title="Showreel 2"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
           </div>
-          <div class="indicators"></div>
+          <div class="slide">
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/FxTOzQXApmE?si=vBLhfqljmp7sDjPR]"
+                title="Showreel 3"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button id="prev">‹</button>
+          <button id="next">›</button>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+
+
+
 
   <!-- My Skill Section Start -->
   <!-- Section Tag and Other Div will same where we need to put same CSS -->
@@ -177,16 +201,57 @@
 
   <!-- Contact Me section Start -->
   <section class="contact" id="contact">
-    <div class="content">
-      <div class="title"><span>Contato</span></div>
-      <div class="text">
-        <div class="topic">Tem Algum Pedido?</div>
-        <p>ainda irei colocar minhas redes sociais aqui em baixo.</p>
-       
+  <div class="content">
+    <div class="title"><span>Contato</span></div>
+
+    <div class="contact-container">
+      <h2>Quer solicitar meus serviços?</h2>
+      <p>Entre em contato comigo por alguma das redes sociais abaixo 👇</p>
+
+      <div class="social-links">
+        <a href="https://www.instagram.com/m4ic0n_7?igsh=b3NpcnoyYXpnbzJy" target="_blank" class="social instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@mcz_cvrlh?_t=ZM-90fCSHtCwg8&_r=1" target="_blank" class="social tiktok">
+          <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="https://youtube.com/@m4ic0n_7?si=rX4RolyvAdqqQze0" target="_blank" class="social youtube">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="maiconvideoeditor@gmail.com" class="social email">
+          <i class="fas fa-envelope"></i>
+        </a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+
   <script src="script.js"></script>
+
+
+  <script>
+  const slides = document.querySelector('.slides');
+  const totalSlides = document.querySelectorAll('.slide').length;
+  const nextBtn = document.getElementById('next');
+  const prevBtn = document.getElementById('prev');
+  let currentIndex = 0;
+
+  function updateSlidePosition() {
+    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSlidePosition();
+  });
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateSlidePosition();
+  });
+</script>
+
 </body>
 
 </html>
