@@ -245,17 +245,29 @@
 </script>
 
 <script>
-// === TEMPORIZADOR QUE CONTINUA CONTANDO MESMO FECHADO ===
+// === TEMPORIZADOR QUE COMEÇA EM 28d 10h 40m E CONTINUA CRESCENDO ===
 
-const inicio = new Date("2025-01-10T00:00:00");
+// Valores iniciais
+let dias = 28;
+let horas = 10;
+let minutos = 40;
+let segundos = 0;
 
 function atualizarTempo() {
-  const agora = new Date();
-  const diff = agora - inicio;
+  segundos++;
 
-  const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutos = Math.floor((diff / (1000 * 60)) % 60);
+  if (segundos >= 60) {
+    segundos = 0;
+    minutos++;
+  }
+  if (minutos >= 60) {
+    minutos = 0;
+    horas++;
+  }
+  if (horas >= 24) {
+    horas = 0;
+    dias++;
+  }
 
   document.getElementById("timerAmor").innerHTML =
     `${dias} dias • ${horas} horas • ${minutos} minutos`;
