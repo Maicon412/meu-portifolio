@@ -1,302 +1,257 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<!-- Website - www.codingnepalweb.com -->
+<html lang="en" dir="ltr">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Nosso Cantinho</title>
-<style>
-  body{
-    margin:0;
-    background:#0e0e0e;
-    font-family:Arial, sans-serif;
-    color:white;
-    display:flex;
-    justify-content:center;
-    padding:20px;
-  }
-
-  .card{
-    width:360px;
-    background:#111;
-    border-radius:20px;
-    overflow:hidden;
-    box-shadow:0 0 25px rgba(0,0,0,0.7);
-  }
-
-  /* Moldura com Torre Eiffel */
-  .foto-area{
-    position:relative;
-    width:100%;
-    height:420px;
-    background:url('torre-eiffel.jpg') center/cover no-repeat;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-  }
-
-  .foto-area img{
-    position: relative;
-    z-index: 2;
-    width:78%;
-    border-radius:18px;
-    box-shadow:0 0 25px rgba(0,0,0,0.7);
-}
-
-
-  /* Player vertical estilo Spotify */
-  .player{
-    padding:20px;
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-  }
-
-  .title{
-    font-size:20px;
-    font-weight:bold;
-    text-align:center;
-  }
-
-  .controls{
-    display:flex;
-    justify-content:center;
-    gap:18px;
-  }
-
-  .btn{
-    background:none;
-    border:0;
-    color:white;
-    cursor:pointer;
-    font-size:26px;
-  }
-
-  .progress-area{
-    width:100%;
-    height:10px;
-    background:#333;
-    border-radius:30px;
-    cursor:pointer;
-    position:relative;
-  }
-
-  .progress{
-    height:100%;
-    width:0%;
-    background:#1DB954;
-    border-radius:30px;
-  }
-
-  .timer{
-    display:flex;
-    justify-content:space-between;
-    font-size:12px;
-    opacity:0.7;
-  }
-
-  .volume{
-    display:flex;
-    flex-direction:column;
-    gap:6px;
-  }
-
-  input[type="range"]{
-    width:100%;
-  }
-  /* Corações flutuando */
-  .coracao {
-    position: fixed;
-    bottom: -20px;
-    color: #ff7eb3;
-    font-size: 22px;
-    animation: subir 6s linear infinite;
-    pointer-events: none;
-  }
-
-  @keyframes subir {
-    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
-  }
-
-  /* Brilho atrás da Torre Eiffel */
-  .foto-area::after{
-    content:"";
-    position:absolute;
-    width:100%;
-    height:100%;
-    top:0;
-    left:0;
-    background: radial-gradient(circle, rgba(255,140,180,0.45), transparent 70%);
-    filter: blur(25px);
-  }
-
-  /* Botões estilo Spotify */
-  .btn{
-    background:#1DB954;
-    width:55px;
-    height:55px;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:28px;
-    box-shadow:0 0 15px rgba(29,185,84,0.7);
-    transition:0.2s;
-  }
-
-  .btn:active{
-    transform:scale(0.92);
-  }
-  body{
-  margin:0;
-  background:url('background.jpg') center/cover no-repeat fixed;
-  font-family:Arial, sans-serif;
-  color:white;
-  display:flex;
-  justify-content:center;
-  padding:20px;
-}
-.timer-romantico {
-  text-align: center;
-  font-size: 18px;
-  font-weight: bold;
-  margin: 15px 0;
-  color: #ff9ecb;
-  text-shadow: 0 0 8px rgba(255,150,200,0.7);
-}
-
-
-</style>
+  <meta charset="UTF-8" />
+  <title>Responsive Portfolio Website HTML CSS| CodingNepal</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Fontawesome CDN Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
+
 <body>
-
-<div class="card">
-  <div class="foto-area">
-    <img src="foto.jpg" alt="nossa foto" />
+  <!-- Move to up button -->
+  <div class="scroll-button">
+    <a href="#home"><i class="fas fa-arrow-up"></i></a>
   </div>
-<div class="timer-romantico" id="timerAmor"></div>
-
-  <div class="player">
-    <div class="title">Eu Te Amo</div>
-
-    <div class="controls">
-      <button class="btn" id="playBtn">▶</button>
+  <!-- navgaition menu -->
+  <nav>
+    <div class="navbar">
+      <div class="logo"><a href="#">Portfolio</a></div>
+      <ul class="menu">
+        <li><a href="#home">Início</a></li>
+        <li><a href="#about">Sobre Mim</a></li>
+        <li><a href="#skills">Habilidades</a></li>
+        <li><a href="#services">serviços</a></li>
+        <li><a href="#contact">Contato</a></li>
+        <div class="cancel-btn">
+          <i class="fas fa-times"></i>
+        </div>
+      </ul>
+      <div class="media-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
     </div>
-
-    <div class="progress-area" id="progressArea">
-      <div class="progress" id="progress"></div>
+    <div class="menu-btn">
+      <i class="fas fa-bars"></i>
     </div>
+  </nav>
 
-    <div class="timer">
-      <span id="current">0:00</span>
-      <span id="duration">0:00</span>
+  <!-- Home Section Start -->
+  <section class="home" id="home">
+    <div class="home-content">
+      <div class="text">
+        <div class="text-one">Olá,</div>
+        <div class="text-two">Eu sou Maicon!</div>
+        <div class="text-three">Video Editor</div>
+        <div class="text-four">from Brasil</div>
+      </div>
+      
     </div>
+  </section>
 
-    <div class="volume">
-      Volume
-      <input type="range" id="vol" min="0" max="1" step="0.01" value="0.8" />
+<section class="about" id="about">
+  <div class="content">
+    <div class="title"><span>Exemplo</span></div>
+    <div class="about-details">
+      <div class="carousel">
+        <div class="slides">
+          <div class="slide">
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/w-PGlIWx3D0?si=lPepvr7PlHdZ_uLs"
+                title="Showreel 1"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/kTlRoHSYNJ4?si=tpFY08MWCLnFCLQP"
+                title="Showreel 2"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/FxTOzQXApmE?si=vBLhfqljmp7sDjPR]"
+                title="Showreel 3"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button id="prev">‹</button>
+          <button id="next">›</button>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<audio id="audio" preload="metadata">
-  <source src="musica.mp3" type="audio/mp3" />
-</audio>
 
-<script>
-  const audio = document.getElementById('audio');
-  const playBtn = document.getElementById('playBtn');
-  const progressArea = document.getElementById('progressArea');
-  const progress = document.getElementById('progress');
-  const current = document.getElementById('current');
-  const duration = document.getElementById('duration');
-  const vol = document.getElementById('vol');
 
-  playBtn.addEventListener('click', () => {
-    if(audio.paused){ audio.play(); playBtn.textContent = '❚❚'; }
-    else{ audio.pause(); playBtn.textContent = '▶'; }
-  });
 
-  audio.addEventListener('loadedmetadata', () => {
-    duration.textContent = formatTime(audio.duration);
-  });
 
-  audio.addEventListener('timeupdate', () => {
-    const percent = (audio.currentTime / audio.duration) * 100;
-    progress.style.width = percent + '%';
-    current.textContent = formatTime(audio.currentTime);
-  });
+  <!-- My Skill Section Start -->
+  <!-- Section Tag and Other Div will same where we need to put same CSS -->
+  <section class="skills" id="skills">
+    <div class="content">
+      <div class="title"><span>Minhas Habilidades</span></div>
+      <div class="skills-details">
+        <div class="text">
+          <div class="topic">Habilidades refletem nosso conhecimento</div>
+          <p>Minhas habilidades refletem meu compromisso em entregar resultados com qualidade, dedicação e criatividade. Acredito que cada tarefa é uma oportunidade de aprendizado e aprimoramento — e é isso que me motiva a buscar sempre o melhor.<br />
+            Se você busca alguém que leve seu projeto a sério e trabalhe com criatividade e entusiasmo, estarei pronto para contribuir com o seu sucesso.
+          </p>
+          <div class="experience">
+            <div class="num"></div>
+            <div class="exp">
+               
+            </div>
+          </div>
+        </div>
+        <div class="boxes">
+          <div class="box">
+            <div class="topic">Cortes</div>
+            <div class="per">90%</div>
+          </div>
+          <div class="box">
+            <div class="topic">Sound Design</div>
+            <div class="per">80%</div>
+          </div>
+          <div class="box">
+            <div class="topic">Color Grading</div>
+            <div class="per">70%</div>
+          </div>
+          <div class="box">
+            <div class="topic">Legendas</div>
+            <div class="per">60%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  progressArea.addEventListener('click', (e) => {
-    const width = progressArea.clientWidth;
-    const clickX = e.offsetX;
-    audio.currentTime = (clickX / width) * audio.duration;
-  });
+  <!-- My Services Section Start -->
+  <section class="services" id="services">
+    <div class="content">
+      <div class="title"><span>Meus serviços</span></div>
+      <div class="boxes">
+        <div class="box">
+          <div class="icon">
+            <i class="fas fa-desktop"></i>
+          </div>
+          <div class="topic">🎥 Edição de vídeos para redes sociais</div>
+          <p>Criação de vídeos curtos e dinâmicos para plataformas como Instagram, TikTok e YouTube Shorts.</p>
+        </div>
+        <div class="box">
+          <div class="icon">
+            <i class="fas fa-paint-brush"></i>
+          </div>
+          <div class="topic">💼 Edição de vídeos corporativos</div>
+          <p>Montagem de vídeos institucionais, apresentações empresariais e treinamentos internos.</p>
+        </div>
+        <div class="box">
+          <div class="icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="topic">🧩 Criação de videoclipes ou reels</div>
+          <p>Sincronização de áudio e imagem, cortes criativos e efeitos visuais para artistas ou influenciadores.</p>
+        </div>
+        <div class="box">
+          <div class="icon">
+            <i class="fab fa-android"></i>
+          </div>
+          <div class="topic">🎓 Edição de vídeos educacionais</div>
+          <p>Montagem de aulas, videoaulas e conteúdos didáticos com legendas, gráficos e cortes limpos.</p>
+        </div>
+        <div class="box">
+          <div class="icon">
+            <i class="fas fa-camera-retro"></i>
+          </div>
+          <div class="topic">🪄 Pós-produção e efeitos visuais (VFX)</div>
+          <p>Correção de cor, inserção de transições, filtros e pequenos efeitos especiais.</p>
+        </div>
+        <div class="box">
+          <div class="icon">
+            <i class="fas fa-tablet-alt"></i>
+          </div>
+          <div class="topic">🔊 Edição de som e trilha sonora</div>
+          <p>Ajuste de volume, remoção de ruídos e adição de músicas ou efeitos sonoros que valorizam o vídeo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  vol.addEventListener('input', () => {
-    audio.volume = vol.value;
-  });
+  <!-- Contact Me section Start -->
+  <section class="contact" id="contact">
+  <div class="content">
+    <div class="title"><span>Contato</span></div>
 
-  function formatTime(sec){
-    const m = Math.floor(sec/60);
-    const s = Math.floor(sec%60).toString().padStart(2,'0');
-    return `${m}:${s}`;
+    <div class="contact-container">
+      <h2>Quer solicitar meus serviços?</h2>
+      <p>Entre em contato comigo por alguma das redes sociais abaixo 👇</p>
+
+      <div class="social-links">
+        <a href="https://www.instagram.com/m4ic0n_7?igsh=b3NpcnoyYXpnbzJy" target="_blank" class="social instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@mcz_cvrlh?_t=ZM-90fCSHtCwg8&_r=1" target="_blank" class="social tiktok">
+          <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="https://youtube.com/@m4ic0n_7?si=rX4RolyvAdqqQze0" target="_blank" class="social youtube">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="maiconvideoeditor@gmail.com" class="social email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <script src="script.js"></script>
+
+
+  <script>
+  const slides = document.querySelector('.slides');
+  const totalSlides = document.querySelectorAll('.slide').length;
+  const nextBtn = document.getElementById('next');
+  const prevBtn = document.getElementById('prev');
+  let currentIndex = 0;
+
+  function updateSlidePosition() {
+    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
   }
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSlidePosition();
+  });
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateSlidePosition();
+  });
 </script>
 
-<script>
-// === TEMPORIZADOR QUE COMEÇA EM 28d 10h 40m E CONTINUA CRESCENDO ===
-
-// Valores iniciais
-let dias = 28;
-let horas = 10;
-let minutos = 42;
-let segundos = 0;
-
-function atualizarTempo() {
-  segundos++;
-
-  if (segundos >= 60) {
-    segundos = 0;
-    minutos++;
-  }
-  if (minutos >= 60) {
-    minutos = 0;
-    horas++;
-  }
-  if (horas >= 24) {
-    horas = 0;
-    dias++;
-  }
-
-  document.getElementById("timerAmor").innerHTML =
-    `${dias} dias • ${horas} horas • ${minutos} minutos`;
-}
-
-setInterval(atualizarTempo, 1000);
-atualizarTempo();
-</script>
-
-
-<script>
-
-
-
-
-  // Corações flutuando continuamente
-  function criarCoracao(){
-    const cor = document.createElement('div');
-    cor.classList.add('coracao');
-    cor.innerHTML = ['❤','💖','💘','💕'][Math.floor(Math.random()*4)];
-    cor.style.left = Math.random()*100 + 'vw';
-    cor.style.fontSize = (18 + Math.random()*20) + 'px';
-    cor.style.animationDuration = (4 + Math.random()*4) + 's';
-    document.body.appendChild(cor);
-    setTimeout(()=>cor.remove(), 8000);
-  }
-
-  setInterval(criarCoracao, 300);
-</script>
 </body>
-</html>
 
+</html>
