@@ -1,257 +1,427 @@
-<!DOCTYPE html>
-<!-- Website - www.codingnepalweb.com -->
-<html lang="en" dir="ltr">
-
+<!doctype html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Responsive Portfolio Website HTML CSS| CodingNepal</title>
-  <link rel="stylesheet" href="style.css" />
-  <!-- Fontawesome CDN Link -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Maicon — Portfólio | Designer Gráfico</title>
+
+  <!-- Ícones -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* RESET E VARIÁVEIS */
+    :root{
+      --bg:#0b0b0b;
+      --card:#0f0f10;
+      --muted:#9aa0a6;
+      --accent:#e6e6e6;
+      --accent-2:#6eb7ff;
+      --radius:14px;
+      --max-width:1200px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      background:var(--bg);
+      color:var(--accent);
+      font-family:"Inter",Arial,Helvetica;
+      line-height:1.4;
+      -webkit-font-smoothing:antialiased;
+    }
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+
+    /* CONTAINER */
+    .container{
+      width:90%;
+      max-width:var(--max-width);
+      margin:0 auto;
+    }
+
+    /* HEADER */
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      padding:16px 0;
+      backdrop-filter:blur(6px);
+      background:rgba(0,0,0,0.45);
+    }
+    header .row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    header nav{
+      display:flex;
+      gap:18px;
+    }
+    header nav a{
+      padding:8px 12px;
+      color:var(--muted);
+      font-weight:600;
+    }
+    header nav a:hover{
+      color:var(--accent);
+      background:rgba(255,255,255,0.03);
+      border-radius:10px;
+    }
+    .menu-btn{
+      display:none;
+      font-size:1.4rem;
+      background:none;
+      border:0;
+      color:var(--accent);
+    }
+
+    /* HERO */
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 520px;
+      align-items:center;
+      min-height:100vh;
+      gap:40px;
+      padding:40px 0 60px;
+    }
+    .hero h1{
+      font-size:clamp(2rem,4vw,3.4rem);
+      font-weight:800;
+      margin-bottom:12px;
+    }
+    .hero .sub{
+      color:var(--muted);
+      max-width:480px;
+      margin-bottom:22px;
+      font-size:1rem;
+    }
+    .btn{
+      padding:12px 20px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.08);
+      background:transparent;
+      color:var(--accent);
+      cursor:pointer;
+      font-weight:700;
+      font-size:1rem;
+    }
+    .btn.primary{
+      background:#fff;
+      color:#000;
+    }
+    .hero-img{
+      padding:8px;
+      border-radius:18px;
+      background:rgba(255,255,255,0.03);
+      box-shadow:0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    /* SECTION TITLES */
+    .title{
+      font-size:1.8rem;
+      font-weight:700;
+      margin:50px 0 22px;
+    }
+
+    /* PORTFÓLIO GRID */
+    .grid{
+      display:grid;
+      gap:22px;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    }
+
+    .card{
+      background:rgba(255,255,255,0.03);
+      border-radius:var(--radius);
+      overflow:hidden;
+      cursor:pointer;
+      border:1px solid rgba(255,255,255,0.04);
+      transition:all .3s ease;
+      position:relative;
+    }
+    .card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 20px 40px rgba(0,0,0,0.6);
+    }
+    .card-footer{
+      padding:14px 16px;
+    }
+    .card-title{
+      font-weight:700;
+    }
+    .card-sub{
+      font-size:0.9rem;
+      color:var(--muted);
+    }
+
+    /* MODAL */
+    .modal{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.75);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      backdrop-filter:blur(6px);
+      z-index:100;
+    }
+    .modal.open{display:flex}
+    .modal-box{
+      max-width:980px;
+      width:100%;
+      background:#0a0a0a;
+      border-radius:14px;
+      overflow:hidden;
+      position:relative;
+    }
+    .modal-img{
+      width:100%;
+      max-height:70vh;
+      object-fit:contain;
+      background:#000;
+    }
+    .modal-info{
+      padding:18px;
+    }
+    .close{
+      position:absolute;
+      top:10px;right:10px;
+      background:none;
+      border:0;
+      font-size:1.5rem;
+      color:#fff;
+      cursor:pointer;
+    }
+
+    /* SERVIÇOS */
+    .services-grid{
+      display:grid;
+      gap:20px;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    }
+    .service{
+      padding:20px;
+      background:rgba(255,255,255,0.03);
+      border-radius:14px;
+    }
+    .service i{
+      font-size:1.8rem;
+      margin-bottom:10px;
+      color:var(--accent-2);
+    }
+
+    /* SOBRE */
+    .about{
+      display:flex;
+      flex-wrap:wrap;
+      gap:30px;
+      align-items:center;
+    }
+    .about p{
+      color:var(--muted);
+      max-width:480px;
+      font-size:1rem;
+    }
+
+    /* CONTATO */
+    .socials{
+      display:flex;
+      gap:16px;
+      justify-content:center;
+      margin-top:10px;
+      flex-wrap:wrap;
+    }
+    .social{
+      width:55px;height:55px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:14px;
+      background:rgba(255,255,255,0.04);
+      transition:.18s;
+      font-size:1.4rem;
+    }
+    .social:hover{transform:translateY(-5px)}
+
+    footer{
+      text-align:center;
+      padding:40px 0;
+      color:var(--muted);
+    }
+
+    /* RESPONSIVO */
+    @media(max-width:900px){
+      header nav{display:none}
+      .menu-btn{display:inline}
+      .hero{
+        grid-template-columns:1fr;
+        text-align:center;
+      }
+      .hero-img{max-width:380px;margin:0 auto}
+    }
+  </style>
 </head>
-
 <body>
-  <!-- Move to up button -->
-  <div class="scroll-button">
-    <a href="#home"><i class="fas fa-arrow-up"></i></a>
-  </div>
-  <!-- navgaition menu -->
-  <nav>
-    <div class="navbar">
-      <div class="logo"><a href="#">Portfolio</a></div>
-      <ul class="menu">
-        <li><a href="#home">Início</a></li>
-        <li><a href="#about">Sobre Mim</a></li>
-        <li><a href="#skills">Habilidades</a></li>
-        <li><a href="#services">serviços</a></li>
-        <li><a href="#contact">Contato</a></li>
-        <div class="cancel-btn">
-          <i class="fas fa-times"></i>
-        </div>
-      </ul>
-      <div class="media-icons">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
-    <div class="menu-btn">
-      <i class="fas fa-bars"></i>
-    </div>
-  </nav>
 
-  <!-- Home Section Start -->
-  <section class="home" id="home">
-    <div class="home-content">
-      <div class="text">
-        <div class="text-one">Olá,</div>
-        <div class="text-two">Eu sou Maicon!</div>
-        <div class="text-three">Video Editor</div>
-        <div class="text-four">from Brasil</div>
-      </div>
-      
+<header>
+  <div class="container row">
+    <div class="logo"><strong>Michael Car.</strong></div>
+    <nav>
+      <a href="#home">Início</a>
+      <a href="#portfolio">Portfólio</a>
+      <a href="#services">Serviços</a>
+      <a href="#about">Sobre</a>
+      <a href="#contact">Contato</a>
+    </nav>
+    <button class="menu-btn"><i class="fa fa-bars"></i></button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section id="home" class="container hero">
+    <div>
+      <h1>Designer Gráfico</h1>
+      <p class="sub">Crio artes promocionais, layouts modernos, banners e peças profissionais para negócios e criadores de conteúdo.</p>
+      <button class="btn primary" onclick="window.location='#contact'">Entrar em Contato</button>
+    </div>
+
+    <div class="hero-img">
+      <img src="Design sem nome (3).png" alt="Foto ou peça de destaque do designer">
     </div>
   </section>
 
-<section class="about" id="about">
-  <div class="content">
-    <div class="title"><span>Exemplo</span></div>
-    <div class="about-details">
-      <div class="carousel">
-        <div class="slides">
-          <div class="slide">
-            <div class="video-wrapper">
-              <iframe
-                src="https://www.youtube.com/embed/w-PGlIWx3D0?si=lPepvr7PlHdZ_uLs"
-                title="Showreel 1"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-              </iframe>
-            </div>
-          </div>
-          <div class="slide">
-            <div class="video-wrapper">
-              <iframe
-                src="https://www.youtube.com/embed/kTlRoHSYNJ4?si=tpFY08MWCLnFCLQP"
-                title="Showreel 2"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-              </iframe>
-            </div>
-          </div>
-          <div class="slide">
-            <div class="video-wrapper">
-              <iframe
-                src="https://www.youtube.com/embed/FxTOzQXApmE?si=vBLhfqljmp7sDjPR]"
-                title="Showreel 3"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-              </iframe>
-            </div>
-          </div>
-        </div>
+  <!-- PORTFÓLIO -->
+  <section id="portfolio" class="container">
+    <h2 class="title">Portfólio</h2>
 
-        <div class="controls">
-          <button id="prev">‹</button>
-          <button id="next">›</button>
+    <div class="grid" id="portfolioGrid">
+      <!-- CARD 1 -->
+      <div class="card" data-title="Promo Hambúrguer" data-desc="Campanha promocional • 2024" data-src="/mnt/data/Design sem nome.png">
+        <img src="design-01.png">
+        <div class="card-footer">
+          <div class="card-title">Promo Monster</div>
+          <div class="card-sub">mockup criativo</div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
 
-
-
-
-
-  <!-- My Skill Section Start -->
-  <!-- Section Tag and Other Div will same where we need to put same CSS -->
-  <section class="skills" id="skills">
-    <div class="content">
-      <div class="title"><span>Minhas Habilidades</span></div>
-      <div class="skills-details">
-        <div class="text">
-          <div class="topic">Habilidades refletem nosso conhecimento</div>
-          <p>Minhas habilidades refletem meu compromisso em entregar resultados com qualidade, dedicação e criatividade. Acredito que cada tarefa é uma oportunidade de aprendizado e aprimoramento — e é isso que me motiva a buscar sempre o melhor.<br />
-            Se você busca alguém que leve seu projeto a sério e trabalhe com criatividade e entusiasmo, estarei pronto para contribuir com o seu sucesso.
-          </p>
-          <div class="experience">
-            <div class="num"></div>
-            <div class="exp">
-               
-            </div>
-          </div>
+      <!-- CARD 2 -->
+      <div class="card" data-title="Coleção Street" data-desc="Moda urbana • 2025" data-src="/mnt/data/gues (1).png">
+        <img src="design-02.png">
+        <div class="card-footer">
+          <div class="card-title">Promo Burguer</div>
+          <div class="card-sub">post promocional</div>
         </div>
-        <div class="boxes">
-          <div class="box">
-            <div class="topic">Cortes</div>
-            <div class="per">90%</div>
-          </div>
-          <div class="box">
-            <div class="topic">Sound Design</div>
-            <div class="per">80%</div>
-          </div>
-          <div class="box">
-            <div class="topic">Color Grading</div>
-            <div class="per">70%</div>
-          </div>
-          <div class="box">
-            <div class="topic">Legendas</div>
-            <div class="per">60%</div>
-          </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="card" data-title="Promo Monster" data-desc="Mockup criativo • 2025" data-src="/mnt/data/R$.png">
+        <img src="design-03.png">
+        <div class="card-footer">
+          <div class="card-title">street winter</div>
+          <div class="card-sub"> post promocional da moda</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- My Services Section Start -->
-  <section class="services" id="services">
-    <div class="content">
-      <div class="title"><span>Meus serviços</span></div>
-      <div class="boxes">
-        <div class="box">
-          <div class="icon">
-            <i class="fas fa-desktop"></i>
-          </div>
-          <div class="topic">🎥 Edição de vídeos para redes sociais</div>
-          <p>Criação de vídeos curtos e dinâmicos para plataformas como Instagram, TikTok e YouTube Shorts.</p>
-        </div>
-        <div class="box">
-          <div class="icon">
-            <i class="fas fa-paint-brush"></i>
-          </div>
-          <div class="topic">💼 Edição de vídeos corporativos</div>
-          <p>Montagem de vídeos institucionais, apresentações empresariais e treinamentos internos.</p>
-        </div>
-        <div class="box">
-          <div class="icon">
-            <i class="fas fa-chart-line"></i>
-          </div>
-          <div class="topic">🧩 Criação de videoclipes ou reels</div>
-          <p>Sincronização de áudio e imagem, cortes criativos e efeitos visuais para artistas ou influenciadores.</p>
-        </div>
-        <div class="box">
-          <div class="icon">
-            <i class="fab fa-android"></i>
-          </div>
-          <div class="topic">🎓 Edição de vídeos educacionais</div>
-          <p>Montagem de aulas, videoaulas e conteúdos didáticos com legendas, gráficos e cortes limpos.</p>
-        </div>
-        <div class="box">
-          <div class="icon">
-            <i class="fas fa-camera-retro"></i>
-          </div>
-          <div class="topic">🪄 Pós-produção e efeitos visuais (VFX)</div>
-          <p>Correção de cor, inserção de transições, filtros e pequenos efeitos especiais.</p>
-        </div>
-        <div class="box">
-          <div class="icon">
-            <i class="fas fa-tablet-alt"></i>
-          </div>
-          <div class="topic">🔊 Edição de som e trilha sonora</div>
-          <p>Ajuste de volume, remoção de ruídos e adição de músicas ou efeitos sonoros que valorizam o vídeo.</p>
-        </div>
+  <!-- MODAL -->
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <button class="close" onclick="closeModal()"><i class="fa fa-times"></i></button>
+      <img id="modalImg" class="modal-img">
+      <div class="modal-info">
+        <h3 id="modalTitle"></h3>
+        <p id="modalDesc"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVIÇOS -->
+  <section id="services" class="container">
+    <h2 class="title">Serviços</h2>
+
+    <div class="services-grid">
+      <div class="service">
+        <i class="fa fa-image"></i>
+        <h3>Design Promocional</h3>
+        <p>Artes profissionais para posts, anúncios, flyers, stories e campanhas.</p>
+      </div>
+
+      <div class="service">
+        <i class="fa fa-paintbrush"></i>
+        <h3>Branding & Identidade</h3>
+        <p>Criação de identidade visual, paleta de cores e estilos completos.</p>
+      </div>
+
+      <div class="service">
+        <i class="fa fa-cube"></i>
+        <h3>Mockups Realistas</h3>
+        <p>Mockups modernos para apresentação profissional de produtos.</p>
       </div>
     </div>
   </section>
 
-  <!-- Contact Me section Start -->
-  <section class="contact" id="contact">
-  <div class="content">
-    <div class="title"><span>Contato</span></div>
+  <!-- SOBRE -->
+  <section id="about" class="container">
+    <h2 class="title">Sobre mim</h2>
 
-    <div class="contact-container">
-      <h2>Quer solicitar meus serviços?</h2>
-      <p>Entre em contato comigo por alguma das redes sociais abaixo 👇</p>
+    <div class="about">
+      <p>Sou designer de social media há 1 ano, apaixonado por comunicação visual. Focado nos estudos visando sempre melhora, buscando uma visão estratégica que aplico em cada
+projeto. Atuo como freelancer, atendendo clientes nacionais e
+internacionais, sempre intencionado a entregar designs claros,
+criativos e focados em resultado.</p>
 
-      <div class="social-links">
-        <a href="https://www.instagram.com/m4ic0n_7?igsh=b3NpcnoyYXpnbzJy" target="_blank" class="social instagram">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://www.tiktok.com/@mcz_cvrlh?_t=ZM-90fCSHtCwg8&_r=1" target="_blank" class="social tiktok">
-          <i class="fab fa-tiktok"></i>
-        </a>
-        <a href="https://youtube.com/@m4ic0n_7?si=rX4RolyvAdqqQze0" target="_blank" class="social youtube">
-          <i class="fab fa-youtube"></i>
-        </a>
-        <a href="maiconvideoeditor@gmail.com" class="social email">
-          <i class="fas fa-envelope"></i>
-        </a>
-      </div>
+      <img src="Design sem nome.png" style="width:280px;border-radius:14px;">
     </div>
-  </div>
-</section>
+  </section>
 
+  <!-- CONTATO -->
+  <section id="contact" class="container">
+    <h2 class="title">Contato</h2>
 
-  <script src="script.js"></script>
+    <p style="color:var(--muted);text-align:center;">Me chame nas redes sociais ou envie um email.</p>
 
+    <div class="socials">
+      <a href="https://instagram.com/m4ic0n_7" target="_blank" class="social"><i class="fab fa-instagram"></i></a>
+      <a href="https://tiktok.com/@mcz_cvrlh" target="_blank" class="social"><i class="fab fa-tiktok"></i></a>
+      <a href="https://youtube.com/@m4ic0n_7" target="_blank" class="social"><i class="fab fa-youtube"></i></a>
+      <a href="mailto:maiconvideoeditor@gmail.com" class="social"><i class="fa fa-envelope"></i></a>
+    </div>
+  </section>
 
-  <script>
-  const slides = document.querySelector('.slides');
-  const totalSlides = document.querySelectorAll('.slide').length;
-  const nextBtn = document.getElementById('next');
-  const prevBtn = document.getElementById('prev');
-  let currentIndex = 0;
+</main>
 
-  function updateSlidePosition() {
-    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-  }
+<footer>
+  © 2025 — Maicon • Designer Gráfico
+</footer>
 
-  nextBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % totalSlides;
-    updateSlidePosition();
+<!-- JAVASCRIPT -->
+<script>
+  const modal = document.getElementById("modal");
+  const modalImg = document.getElementById("modalImg");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalDesc = document.getElementById("modalDesc");
+
+  document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("click", () => {
+      modalImg.src = card.getAttribute("data-src");
+      modalTitle.textContent = card.getAttribute("data-title");
+      modalDesc.textContent = card.getAttribute("data-desc");
+      modal.classList.add("open");
+    });
   });
 
-  prevBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-    updateSlidePosition();
+  function closeModal(){
+    modal.classList.remove("open");
+  }
+
+  modal.addEventListener("click", e => {
+    if(e.target === modal) closeModal();
   });
 </script>
 
 </body>
-
 </html>
