@@ -698,26 +698,18 @@ select option {
   </div>
 
   <script>
-    /**
-     * ====== CONFIGURAÇÃO PRINCIPAL ======
-     * Troque para o seu número com DDI + DDD, SEM +, SEM espaços, SEM traços.
-     * Exemplo Brasil: 55 + DDD + número -> 5571999999999
-     */
-    const WHATSAPP_NUMBER = "5577991952760";
- // <-- TROQUE AQUI
+   
+   
 
-    function waLink(message) {
-      const text = encodeURIComponent(message);
-      return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
-    }
 
-    function openWhatsApp(message) {
-      if (!WHATSAPP_NUMBER || WHATSAPP_NUMBER === "5577991952760") {
-        alert("Configure seu número do WhatsApp no código (WHATSAPP_NUMBER).");
-        return;
-      }
-      window.open(waLink(message), "_blank", "noopener,noreferrer");
-    }
+
+   const WHATSAPP_NUMBER = "5577991952760";
+
+function openWhatsApp(message) {
+  const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
+  window.open(url, "_blank");
+}
+
 
     // ====== BOTÕES WHATSAPP ======
     document.getElementById("whatsHeroBtn").addEventListener("click", () => {
