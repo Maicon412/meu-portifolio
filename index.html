@@ -389,7 +389,7 @@ select option {
   <header>
     <div class="container nav">
       <div class="brand">
-        <span>Maicon</span><span class="dot">•</span><span style="color:var(--muted);font-weight:800">Pedidos de Artes</span>
+        <span>Maicon</span><span class="dot">•</span>
       </div>
 
       <nav class="links" aria-label="Menu">
@@ -409,11 +409,10 @@ select option {
       <div>
         <span class="pill">Artes para Instagram • Banners • Promoções • Identidade</span>
         <h1>Peça sua arte profissional em minutos e receba pronto para postar.</h1>
-    <
 
         <div class="heroCtas">
           <a class="btn primary" href="#pedido">Fazer pedido agora</a>
-          <button class="btn" id="whatsHeroBtn">Ir para o WhatsApp</button>
+          
         </div>
 
         <div class="tagRow">
@@ -423,21 +422,14 @@ select option {
         </div>
       </div>
 
-      <div class="heroCard">
-        
-        <div class="mini">
-          <div class="preview"><img src="design-02.png" alt="Exemplo 1" /></div>
-          <div class="preview"><img src="design-06.png" alt="Exemplo 2" /></div>
-        </div>
-      
-      </div>
+     
     </section>
 
     <!-- PORTFÓLIO -->
     <section class="container" id="portfolio">
       <div class="sectionTitle">
-        <h2>Portfólio (exemplos)</h2>
-        <div class="hint">Clique em uma arte para abrir em tamanho grande</div>
+        <h2>Exemplos</h2>
+        
       </div>
 
       <div class="grid" id="portfolioGrid">
@@ -520,7 +512,7 @@ select option {
     <section class="container" id="pacotes">
       <div class="sectionTitle">
         <h2>Pacotes</h2>
-        <div class="hint">Você pode pedir 1 arte ou um pacote mensal</div>
+   
       </div>
 
       <div class="cards">
@@ -572,7 +564,7 @@ select option {
     <section class="container" id="como-pedir">
       <div class="sectionTitle">
         <h2>Como funciona o pedido</h2>
-        <div class="hint">Rápido e sem complicação</div>
+       
       </div>
 
       <div class="steps">
@@ -599,7 +591,7 @@ select option {
     <section class="container" id="pedido">
       <div class="sectionTitle">
         <h2>Fazer pedido</h2>
-        <div class="hint">Preencha e eu já recebo tudo no WhatsApp</div>
+     
       </div>
 
       <div class="orderWrap">
@@ -657,9 +649,7 @@ select option {
             <button class="btn full" id="whatsDirectBtn">Falar direto no WhatsApp</button>
           </div>
 
-          <p style="margin-top:12px;color:var(--muted);font-weight:650;font-size:.92rem">
-            * Ajuste os valores e regras dos pacotes como quiser.
-          </p>
+          
         </aside>
       </div>
     </section>
@@ -677,8 +667,8 @@ select option {
 
     <footer>
       <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
-        <div>© <b>Maicon Designer</b> — Pedidos de Artes</div>
-        <div style="color:rgba(162,166,173,.85)">Site responsivo • Portfólio • WhatsApp</div>
+        <div>© <b>Maicon Designer</b> </div>
+        <div style="color:rgba(162,166,173,.85)">Site • Portfólio • WhatsApp</div>
       </div>
     </footer>
   </main>
@@ -698,12 +688,15 @@ select option {
   </div>
 
   <script>
-   
-   
+    /**
+     * ====== CONFIGURAÇÃO PRINCIPAL ======
+     * Troque para o seu número com DDI + DDD, SEM +, SEM espaços, SEM traços.
+     * Exemplo Brasil: 55 + DDD + número -> 5571999999999
+     */
+  
 
-
-
-   const WHATSAPP_NUMBER = "5577991952760";
+ // <-- TROQUE AQUI
+const WHATSAPP_NUMBER = "5577991952760";
 
 function openWhatsApp(message) {
   const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
