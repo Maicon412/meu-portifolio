@@ -43,7 +43,7 @@
       padding:8px 12px;border-radius:999px;
       color:var(--muted);
       font-weight:600;
-      font-size:.92rem;
+      font-size: clamp(0.75rem, 1.2vw, 0.9rem);
     }
     .btn{
       display:inline-flex;align-items:center;justify-content:center;
@@ -381,6 +381,59 @@ select option {
   color: #fff;
 }
 
+.reviews{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:16px;
+}
+
+.review{
+  border:1px solid var(--border);
+  background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border-radius:var(--radius);
+  padding:16px;
+  display:flex;
+  gap:12px;
+  box-shadow: var(--shadow);
+}
+
+.avatar{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  color:#071018;
+  background:linear-gradient(90deg, var(--accent), var(--accent2));
+  flex-shrink:0;
+}
+
+.review .text{
+  font-weight:650;
+  color:var(--text);
+}
+
+.review .meta{
+  margin-top:8px;
+  color:var(--muted);
+  font-weight:700;
+  font-size:.92rem;
+}
+
+.disclaimer{
+  margin-top:10px;
+  color:rgba(162,166,173,.7);
+  font-size:.85rem;
+}
+
+/* Responsivo */
+@media (max-width: 980px){
+  .reviews{grid-template-columns: 1fr}
+}
+
+
   </style>
 
 </head>
@@ -389,7 +442,7 @@ select option {
   <header>
     <div class="container nav">
       <div class="brand">
-        <span>Maicon</span><span class="dot">•</span>
+        <span>Maicon - Knox Studio</span><span class="dot">•</span>
       </div>
 
       <nav class="links" aria-label="Menu">
@@ -651,6 +704,65 @@ select option {
       </div>
     </section>
 
+
+<section class="container" id="avaliacoes">
+  <div class="sectionTitle">
+    <h2>Feedbacks</h2>
+ 
+  </div>
+
+  <div class="reviews">
+    <article class="review">
+      <div class="avatar">A</div>
+      <div class="content">
+        <p class="text">
+          Me entregou rapido, forneceu alterações e realmente entregou algo coerente com meu comercio
+        </p>
+        <div class="meta">
+          <strong>Paulo Ricardo</strong>
+          <span>• Lanchonete</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="review">
+      <div class="avatar">M</div>
+      <div class="content">
+        <p class="text">
+          Entregou pacote certinho o preço compensou muito pela qualidade, Me surpreendeu!!
+        </p>
+        <div class="meta">
+          <strong>Marina Alves</strong>
+          <span>• Revendedora</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="review">
+      <div class="avatar">C</div>
+      <div class="content">
+        <p class="text">
+        As artes no prazo e com qualidade otima pronto para postar no meu instagram
+        </p>
+        <div class="meta">
+          <strong>Carlos</strong>
+          <span>• Professor</span>
+        </div>
+      </div>
+    </article>
+  </div>
+
+ 
+
+  <div style="margin-top:14px">
+    <button class="btn primary" id="feedbackBtn">
+  Deixar um feedback
+</button>
+
+  </div>
+</section>
+
+
     <!-- CONTATO -->
     <section class="container" id="contato">
       <div class="contactBox">
@@ -664,7 +776,7 @@ select option {
 
     <footer>
       <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
-        <div>© <b>Maicon Designer</b> </div>
+        <div>© <b>Maicon - Knox Studio</b> </div>
         <div style="color:rgba(162,166,173,.85)">Site • Portfólio • WhatsApp</div>
       </div>
     </footer>
@@ -685,49 +797,55 @@ select option {
   </div>
 
   <script>
-    /**
-     * ====== CONFIGURAÇÃO PRINCIPAL ======
-     * Troque para o seu número com DDI + DDD, SEM +, SEM espaços, SEM traços.
-     * Exemplo Brasil: 55 + DDD + número -> 5571999999999
-     */
-  
+  // ===== WhatsApp =====
+  const WHATSAPP_NUMBER = "5577991952760";
 
- // <-- TROQUE AQUI
-const WHATSAPP_NUMBER = "5577991952760";
+  function openWhatsApp(message) {
+    const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
+    window.open(url, "_blank");
+  }
 
-function openWhatsApp(message) {
-  const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
-  window.open(url, "_blank");
-}
-
-
-    // ====== BOTÕES WHATSAPP ======
-    document.getElementById("whatsHeroBtn").addEventListener("click", () => {
+  // Só adiciona evento se o elemento existir
+  const whatsHeroBtn = document.getElementById("whatsHeroBtn");
+  if (whatsHeroBtn) {
+    whatsHeroBtn.addEventListener("click", () => {
       openWhatsApp("Olá! Quero fazer um pedido de arte. Pode me passar os valores e prazos?");
     });
+  }
 
-    document.getElementById("whatsPortfolioBtn").addEventListener("click", () => {
+  const whatsPortfolioBtn = document.getElementById("whatsPortfolioBtn");
+  if (whatsPortfolioBtn) {
+    whatsPortfolioBtn.addEventListener("click", () => {
       openWhatsApp("Olá! Vi seu portfólio e quero pedir uma arte parecida. Podemos conversar?");
     });
+  }
 
-    document.getElementById("whatsDirectBtn").addEventListener("click", () => {
+  const whatsDirectBtn = document.getElementById("whatsDirectBtn");
+  if (whatsDirectBtn) {
+    whatsDirectBtn.addEventListener("click", () => {
       openWhatsApp("Olá! Quero fazer um pedido de arte. Meu tipo de projeto é: ____");
     });
+  }
 
-    document.getElementById("whatsBottomBtn").addEventListener("click", () => {
+  const whatsBottomBtn = document.getElementById("whatsBottomBtn");
+  if (whatsBottomBtn) {
+    whatsBottomBtn.addEventListener("click", () => {
       openWhatsApp("Olá! Quero pedir uma arte. Me diga como começamos?");
     });
+  }
 
-    // ====== PACOTES -> WHATS ======
-    document.querySelectorAll("[data-pack]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const pack = btn.getAttribute("data-pack");
-        openWhatsApp(`Olá! Quero pedir o pacote: ${pack}. Pode me passar os valores e o que está incluso?`);
-      });
+  // Pacotes -> Whats
+  document.querySelectorAll("[data-pack]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const pack = btn.getAttribute("data-pack");
+      openWhatsApp(`Olá! Quero pedir o pacote: ${pack}. Pode me passar os valores e o que está incluso?`);
     });
+  });
 
-    // ====== FORM -> WHATS COM MENSAGEM PRONTA ======
-    document.getElementById("orderForm").addEventListener("submit", (e) => {
+  // Form -> Whats
+  const orderForm = document.getElementById("orderForm");
+  if (orderForm) {
+    orderForm.addEventListener("submit", (e) => {
       e.preventDefault();
 
       const name = document.getElementById("name").value.trim();
@@ -747,46 +865,66 @@ function openWhatsApp(message) {
 
       openWhatsApp(msg);
     });
+  }
 
-    // ====== PORTFÓLIO MODAL ======
-    const modal = document.getElementById("modal");
-    const modalImg = document.getElementById("modalImg");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalDesc = document.getElementById("modalDesc");
+  // ===== Modal do Portfólio =====
+  const modal = document.getElementById("modal");
+  const modalImg = document.getElementById("modalImg");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalDesc = document.getElementById("modalDesc");
+  const closeModalBtn = document.getElementById("closeModal");
 
-    function openModal(src, title, desc) {
-      modalImg.src = src;
-      modalTitle.textContent = title || "";
-      modalDesc.textContent = desc || "";
-      modal.classList.add("open");
-      modal.setAttribute("aria-hidden", "false");
-    }
-    function closeModal() {
-      modal.classList.remove("open");
-      modal.setAttribute("aria-hidden", "true");
-      modalImg.src = "";
-    }
+  function openModal(src, title, desc) {
+    modalImg.src = src;
+    modalTitle.textContent = title || "";
+    modalDesc.textContent = desc || "";
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+  }
 
-    document.getElementById("closeModal").addEventListener("click", closeModal);
-    modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && modal.classList.contains("open")) closeModal(); });
+  function closeModal() {
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+    modalImg.src = "";
+  }
 
-    document.querySelectorAll(".work").forEach(card => {
-      card.addEventListener("click", () => {
-        openModal(
-          card.getAttribute("data-src"),
-          card.getAttribute("data-title"),
-          card.getAttribute("data-desc")
-        );
-      });
+  if (closeModalBtn) closeModalBtn.addEventListener("click", closeModal);
+
+  if (modal) {
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
     });
+  }
 
-    // ====== MENU MOBILE (simples) ======
-    const menuBtn = document.getElementById("menuBtn");
-    menuBtn.addEventListener("click", () => {
-      const target = document.getElementById("portfolio");
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal && modal.classList.contains("open")) closeModal();
+  });
+
+  // Aqui está o que faz o click abrir o modal
+  document.querySelectorAll(".work").forEach(card => {
+    card.addEventListener("click", () => {
+      openModal(
+        card.getAttribute("data-src"),
+        card.getAttribute("data-title"),
+        card.getAttribute("data-desc")
+      );
     });
-  </script>
+  });
+
+
+  const feedbackBtn = document.getElementById("feedbackBtn");
+if (feedbackBtn) {
+  feedbackBtn.addEventListener("click", () => {
+    openWhatsApp(
+      "Olá! Gostaria de deixar um feedback sobre o trabalho.\n\n" +
+      "Meu feedback:\n" +
+      "(nota de 0 a 10)\n" +
+      "Comentário: "
+    );
+  });
+}
+
+</script>
+
 </body>
 </html>
